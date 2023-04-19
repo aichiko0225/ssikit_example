@@ -1,5 +1,11 @@
 import 'dart:convert';
 
+class BaseModel extends Object {
+  int? code;
+  String? msg;
+
+}
+
 abstract class RecordModel extends Object {
   factory RecordModel.fromJson(Type classType, Map<String, dynamic> json) {
     // TODO: implement fromJson

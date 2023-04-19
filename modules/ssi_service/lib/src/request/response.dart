@@ -2,9 +2,9 @@ import 'exceptions.dart';
 
 enum Status { COMPLETED, ERROR }
 
-class SsiResponse<T> implements Exception {
+class SsiResponse implements Exception {
   Status? status;
-  T? data;
+  dynamic data;
   HttpException? exception;
 
   SsiResponse.completed(this.data) {
