@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import './home_logic.dart';
 
 class HomePage extends StatefulWidget{
-  const HomePage({super.key, required this.title});
+
+  HomePage({super.key, required this.title});
 
   final String title;
 
@@ -11,7 +14,7 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage>{
   int _counter = 0;
-
+  var homeLogic = Get.put(HomeLogic());
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -33,15 +36,24 @@ class _HomePageState extends State<HomePage>{
                 const Text(
                   'You have pushed the button this many times:',
                 ),
-                Text(
-                  '$_counter',
+                // GetBuilder<HomeLogic>(builder: (logic){
+                //   return Text(
+                //     '${homeLogic.count.value}',
+                //     style: Theme.of(context).textTheme.headlineMedium,
+                //   );
+                // })
+                Obx(() => Text(
+                  '${homeLogic.count.value}',
                   style: Theme.of(context).textTheme.headlineMedium,
-                ),
+                ))
+
               ],
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: _incrementCounter,
+            // onPressed: _incrementCounter,
+            onPressed: ()=>homeLogic.increase(),
+
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
