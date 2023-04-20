@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './home_logic.dart';
+import './testRoutePage/testRoutePage_view.dart';
 
 class HomePage extends StatefulWidget{
 
@@ -45,7 +46,19 @@ class _HomePageState extends State<HomePage>{
                 Obx(() => Text(
                   '${homeLogic.count.value}',
                   style: Theme.of(context).textTheme.headlineMedium,
-                ))
+                )),
+                TextButton(
+                  child: const Text(
+                    '跳转',
+                  ),
+                  onPressed:()=>{
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context){
+                          return testRoutePage();
+                        })
+                    )
+                  }
+                ),
 
               ],
             ),
